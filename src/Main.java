@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +30,7 @@ public class Main {
         double valorHora = 0;
         double cantidadHoras = 0;
         double bonificacionEmpleado = 0;
+        double valorSalarioMinimo = 0;
         int auxilioTransporte = 200000;
 
         System.out.println("Ingrese su usuario");
@@ -39,10 +41,49 @@ public class Main {
 
         if( usuarioEmpleado.equals("mefisto") && contrasenaUsuario.equals("mefisto")){
             System.out.println("Ha ingresado de forma correcta");
+
+            System.out.println("Ingrese el nombre del empleado");
+            nombreEmpleado = sc.nextLine();
+
+            System.out.println("Ingrese el número de documento del empleado");
+            documentoIdentidad = sc.nextLine();
+
+            System.out.println("¿Cuál es su día de descanso (Lunes - Viernes)?");
+            diaDescanso = sc.nextLine();
+
+            System.out.print("¿Cuál es el valor de la hora");
+            valorHora = sc.nextDouble();
+
+            System.out.print("Ingrese la cantidad de horas");
+            cantidadHoras = sc.nextDouble();
+
+            System.out.println("Ingrese el valor del salario minimo para este año");
+            valorSalarioMinimo = sc.nextDouble();
+
+
+
+            salarioBruto = valorHora * cantidadHoras;
+
+            if (salarioBruto > valorSalarioMinimo*2 ){
+                bonificacionEmpleado = 0;
+                auxilioTransporte = 0;
+            } else {
+                bonificacionEmpleado = salarioBruto *0.1;
+                auxilioTransporte = 200000;
+            }
+
+            salarioNeto = salarioBruto + bonificacionEmpleado + auxilioTransporte;
+
+            System.out.println("El salario neto es: " +salarioNeto);
+
+
+
+
+
+
         } else {
             System.out.println("Credenciales incorrectas");
         }
-
 
 
     }
